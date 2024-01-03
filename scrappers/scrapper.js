@@ -1,6 +1,9 @@
 const puppeteer = require("puppeteer");
 const getNews = async (url) => {
-    const browser = await puppeteer.launch(`headless: "new"`);
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser', //without it throws a weird error in .cache/...
+        headless: "new"
+    });
     const page = await browser.newPage();
     let result;
     // Navigate to the webpage
@@ -8,7 +11,7 @@ const getNews = async (url) => {
 
     // Use page.$$eval to select and extract elements in one go
     if (url.includes("cenital")) {
-        result = await page.$$eval("article", (articles) => {
+        result = await page.$$eval("section.posts-from-newsletter article", (articles) => {
             const anchors = [];
             articles.forEach((article) => {
                 const anchorEl = article.querySelector("a");
