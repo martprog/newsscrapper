@@ -33,9 +33,6 @@ const getNews = async (url) => {
             }));
         });
     }
-    // Log the result
-    //console.log(result);
-    // Close the browser
     await browser.close();
     return result;
 };

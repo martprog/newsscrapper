@@ -4,7 +4,6 @@ const { getNews } = require("./scrappers/scrapper");
 
 async function writeNewsJSON(news, url) {
     try {
-        console.log("news_ " + news)
         if (url.includes("cenital")) {
             await fs.writeFile("assets/cenital.json", JSON.stringify(news, null, 2));
         } else {

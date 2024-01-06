@@ -1,5 +1,4 @@
 const express = require("express");
-const { getNews } = require("./scrappers/scrapper");
 const fs = require('fs');
 const app = express();
 const fetchNews = require("./cronjob")
